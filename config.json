@@ -7,13 +7,13 @@
 	        "file":"input_J.txt",
 	        "deck":"日文",
 			"dict_source":"japanese_mix",
-			"card_type":"japanse_recognition_recall"
+			"card_type":"japanese_recognition_recall"
 		},
 		{
 	        "file":"input_JV.txt",
 	        "deck":"日文",
 			"dict_source":"japanese_verb",
-			"card_type":"japanse_recognition_recall"
+			"card_type":"japanese_recognition_recall"
 	   	},
 		{
 			"file":"input_EY.txt",

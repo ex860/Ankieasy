@@ -4,7 +4,7 @@
     [
         {
 	        "deck":"日文",
-            "card_type":"japanse_recognition_recall",
+            "card_type":"japanese_recognition_recall",
             "content": 
             [
                 
@@ -12,10 +12,14 @@
         },
  	 	{
 	        "deck":"日文句子",
-            "card_type":"japanse_recognition_recall",
+            "card_type":"japanese_recognition_recall",
             "content": 
             [
-                
+                {
+                    "front_word":"",
+                    "back_word":"",
+                    "read_word":""
+                }
             ]
         },
         {
@@ -36,9 +40,15 @@
         }
     ],
     "template":
-    {
-        "front_word":"",
-        "back_word":"",
-        "read_word":""
-    }
+    [
+        {
+            "front_word":"",
+            "back_word":"",
+            "read_word":""
+        },
+        {
+            "front_word":"",
+            "back_word":""
+        }
+    ]
 }

@@ -7,12 +7,12 @@
 		{
 	        "deck":"日文",
 			"dict_source":"japanese_mix",
-			"card_type":"japanse_recognition_recall"
+			"card_type":"japanese_recognition_recall"
 		},
 		{
 	        "deck":"日文",
 			"dict_source":"japanese_verb",
-			"card_type":"japanse_recognition_recall"
+			"card_type":"japanese_recognition_recall"
 	   	},
 		{
 			"deck":"英文",
