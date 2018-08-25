@@ -11,7 +11,7 @@ from re import compile as _Re
 
 _unicode_chr_splitter = _Re( '(?s)((?:[\u2e80-\u9fff])|.)' ).split
 
-def LookUp(word, data, download_dir):
+def LookUp(word, download_dir):
     result = {}
 
     # Eliminate the end of line delimiter

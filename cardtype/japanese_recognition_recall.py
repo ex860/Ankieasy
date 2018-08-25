@@ -1,6 +1,6 @@
 
 def GetCardType(models):
-    return "Japanese (recognition&recall)"
+    return 'Japanese (recognition&recall)'
 
 def MakeCard(data):
     result = {}

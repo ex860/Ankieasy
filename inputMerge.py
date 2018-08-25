@@ -48,7 +48,7 @@ def handleProfile(data, collection, download_dir, inputFilePath):
         for word in word_list:
             word = word.splitlines()[0]
             if stat == START and word != END_OF_DICT:
-                result = dict_source.LookUp(word, data, download_dir)
+                result = dict_source.LookUp(word, download_dir)
 
                 if result is None:
                     continue

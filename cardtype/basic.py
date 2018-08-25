@@ -4,9 +4,9 @@ def GetCardType(models):
     global isChinese
     if models.byName('基本型') is not None:
         isChinese = True
-        return "基本型"
+        return '基本型'
     else:
-        return "Basic"
+        return 'Basic'
 
 def MakeCard(data):
     result = {}

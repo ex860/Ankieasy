@@ -44,7 +44,7 @@ def handleProfile(data, collection, download_dir):
     deck = initAnkiModule(data, collection, card_type)
     with open(input_file , encoding='utf-8') as word_list:
         for word in word_list:
-            result = dict_source.LookUp(word, data, download_dir)
+            result = dict_source.LookUp(word, download_dir)
 
             if result is None:
                 continue

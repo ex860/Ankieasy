@@ -8,7 +8,7 @@ import datetime
 import json
 import re
 
-def LookUp(word, data, download_dir):
+def LookUp(word, download_dir):
 
     # Eliminate the end of line delimiter
     word = word.splitlines()[0]

@@ -118,7 +118,7 @@ def makeCard(TrunCaraList, front_word, back_word):
     output['back_word'] = HanziConv.toTraditional(back_word)
     return output
 
-def LookUp(word, data, download_dir):
+def LookUp(word, download_dir):
     
     result = {}
     front_word = ''

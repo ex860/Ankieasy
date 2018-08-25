@@ -124,7 +124,7 @@ def getExampleSentence(soup, sentenceCnt):
     return output
 
 
-def LookUp(word, data, download_dir):
+def LookUp(word, download_dir):
     
     result = {}
     front_word = ''
