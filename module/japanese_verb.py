@@ -23,10 +23,10 @@ def getVerb(tr, typeArray, front_word, download_dir):
         accentedWord = typeTd.find('span', class_='accented_word')
         if accentedWord != None:
             soundDiv = typeTd.find('div', class_='katsuyo_proc_button clearfix')
-            soundStr = soundDiv.find('a', class_='katsuyo_proc_female_button js_proc_female_button')['id']
+            soundStr = soundDiv.find('a', class_='katsuyo_proc_male_button js_proc_male_button')['id']
             # 把數字後兩位數截掉 前面加兩個0 再取後三位
             soundStrNum = ('00{}'.format(str(math.floor(int(soundStr[0:soundStr.find('_')])/100))))[-3:]
-            soundUrl = 'http://www.gavo.t.u-tokyo.ac.jp/ojad/sound4/mp3/female/{}/{}.mp3'.format(soundStrNum, soundStr)
+            soundUrl = 'http://www.gavo.t.u-tokyo.ac.jp/ojad/sound4/mp3/male/{}/{}.mp3'.format(soundStrNum, soundStr)
             try:
                 urllib.request.urlretrieve(soundUrl, '{}{}.mp3'.format(download_dir, soundStr))
                 front_word += '[sound:{}.mp3]'.format(soundStr)
@@ -44,12 +44,12 @@ def getJishoMasu(tr, jisho_masu, front_word, download_dir):
         typeTd = tr.find('td', class_='katsuyo katsuyo_{}_js'.format(typeStr))
         soundDiv = typeTd.find('div', class_='katsuyo_proc_button clearfix')
         if soundDiv != None:
-            femaleButton = soundDiv.find('a', class_='katsuyo_proc_female_button js_proc_female_button')
-            if femaleButton != None:
-                soundStr = femaleButton['id']
+            maleButton = soundDiv.find('a', class_='katsuyo_proc_male_button js_proc_male_button')
+            if maleButton != None:
+                soundStr = maleButton['id']
                 # 把數字後兩位數截掉 前面加兩個0 再取後三位
                 soundStrNum = ('00{}'.format(str(math.floor(int(soundStr[0:soundStr.find('_')])/100))))[-3:]
-                soundUrl = 'http://www.gavo.t.u-tokyo.ac.jp/ojad/sound4/mp3/female/{}/{}.mp3'.format(soundStrNum, soundStr)
+                soundUrl = 'http://www.gavo.t.u-tokyo.ac.jp/ojad/sound4/mp3/male/{}/{}.mp3'.format(soundStrNum, soundStr)
                 try:
                     urllib.request.urlretrieve(soundUrl, '{}{}.mp3'.format(download_dir, soundStr))
                     front_word += '[sound:{}.mp3]'.format(soundStr)

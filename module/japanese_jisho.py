@@ -157,7 +157,7 @@ def LookUp(word, download_dir):
                     except urllib.error.HTTPError as err:
                         print('Jisho_err=', err)
     else:
-        front_word += getForvoSound(Forvo_Soup, download_dir, word) + word + '<br>'
+        front_word += getForvoSound(Forvo_Soup, download_dir, word)
     front_word += word + '<br>'
     
     furiBlock = partJP.find('span', class_='furigana')

@@ -1,0 +1,63 @@
+C:\Users\Yu-Hsien\Desktop\crawler>npm test
+
+> crawler@1.0.0 test C:\Users\Yu-Hsien\Desktop\crawler
+> jest
+
+ PASS  ./MLJob_Test.test.js
+  MLJob
+    √ Checking MLJob request (2ms)
+    √ Login (2194ms)
+
+  console.log MLJob_Test.test.js:53
+    https://track.hujiang.com/v2/event?d=%7B%22cid%22%3A1100%2C%22eid%22%3A%22main_search%22%2C%22p%22%3A%22%257B%2522lang%2522%253A%2522jc%2522%252C%2522platform%2522%253A%2522other_other%2522%257D%22%2C%22siteid%22%3A3%2C%22hjid%22%3A%22%22%2C%22hj_url%22%3A%22https%253A%252F%252Fdict.hjenglish.com%252Fjp%252F%22%2C%22hj_urlref%22%3A%22%22%2C%22hj_uid%22%3A%22fbe1583f-08de-8d2d-0928-33beaf4531b9%22%2C%22hj_sid%22%3A%2224fee53f-0383-2958-240f-045af0a87757%22%2C%22hj_ssid%22%3A%2216cbc680-59e3-508a-0225-d58bb9d72db9%22%2C%22hj_t%22%3A1538290094054%2C%22hj_p%22%3A%22%7B%5C%22res%5C%22%3A%5C%22800*600%5C%22%2C%5C%22wres%5C%22%3A%5C%22800*600%5C%22%2C%5C%22bdhm%5C%22%3Anull%2C%5C%22title%5C%22%3A%5C%22%E6%97%A5%E8%AF%AD%E5%9C%A8%E7%BA%BF%E7%BF%BB%E8%AF%91_%E5%9C%A8%E7%BA%BF%E6%97%A5%E8%AF%AD%E8%AF%8D%E5%85%B8_%E6%B2%AA%E6%B1%9F%E5%B0%8FD%5C%22%7D%22%2C%22hj_ua%22%3A%22Mozilla%252F5.0%2520(Windows%2520NT%252010.0%253B%2520Win64%253B%2520x64)%2520AppleWebKit%252F537.36%2520(KHTML%252C%2520like%2520Gecko)%2520HeadlessChrome%252F71.0.3542.0%2520Safari%252F537.36%22%2C%22_%22%3A%22LI4T1K4S8OSXJOMJ%22%7D&t=1538290094055
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        4.008s
+Ran all test suites.
+  console.log MLJob_Test.test.js:53
+    https://dict.hjenglish.com/jp/jc/%E3%81%8A%E6%89%8B%E6%B4%97%E3%81%84
+
+  console.log MLJob_Test.test.js:53
+    https://trackcommon.hujiang.com/analytics/ht/ht.min.js?v=17804
+
+  console.log MLJob_Test.test.js:53
+    https://track.hujiang.com/log?siteid=3&urlref=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&hj_t=1538290094404
+
+  console.log MLJob_Test.test.js:53
+    https://track.hujiang.com/v2/track?d=%7B%22hj_siteid%22%3A3%2C%22hj_uid%22%3A%22fbe1583f-08de-8d2d-0928-33beaf4531b9%22%2C%22hj_ssid%22%3A%2216cbc680-59e3-508a-0225-d58bb9d72db9%22%2C%22hj_sid%22%3A%2224fee53f-0383-2958-240f-045af0a87757%22%2C%22hj_vt%22%3A0%2C%22hjid%22%3A%22%22%2C%22hj_sst%22%3A0%2C%22hj_csst%22%3A1%2C%22hj_st%22%3A0%2C%22hj_cst%22%3A1%2C%22hj_ref%22%3A%22%22%2C%22hj_sref%22%3A%22%22%2C%22hj_url%22%3A%22https%253A%252F%252Fdict.hjenglish.com%252Fjp%252Fjc%252F%2525E3%252581%25258A%2525E6%252589%25258B%2525E6%2525B4%252597%2525E3%252581%252584%22%2C%22hj_urlref%22%3A%22https%253A%252F%252Fdict.hjenglish.com%252Fjp%252F%22%2C%22ch_source%22%3A%22%22%2C%22hj_fp%22%3A1743648346%2C%22hj_t%22%3A1538290094469%2C%22hj_v%22%3A50%2C%22hj_ua%22%3A%22Mozilla%252F5.0%2520(Windows%2520NT%252010.0%253B%2520Win64%253B%2520x64)%2520AppleWebKit%252F537.36%2520(KHTML%252C%2520like%2520Gecko)%2520HeadlessChrome%252F71.0.3542.0%2520Safari%252F537.36%22%2C%22hj_p%22%3A%22%7B%5C%22res%5C%22%3A%5C%22800*600%5C%22%2C%5C%22wres%5C%22%3A%5C%22800*600%5C%22%2C%5C%22bdhm%5C%22%3Anull%2C%5C%22title%5C%22%3A%5C%22%E3%81%8A%E6%89%8B%E6%B4%97%E3%81%84%E6%98%AF%E4%BB%80%E4%B9%88%E6%84%8F%E6%80%9D_%E6%97%A5%E8%AF%AD%E5%9C%A8%E7%BA%BF%E7%BF%BB%E8%AF%91_%E3%81%8A%E6%89%8B%E6%B4%97%E3%81%84%E7%9A%84%E7%BF%BB%E8%AF%91_%E5%90%AB%E4%B9%89_%E8%AF%BB%E9%9F%B3_%E7%94%A8%E6%B3%95_%E5%8F%82%E8%80%83%E4%BE%8B%E5%8F%A5_%E6%B2%AA%E6%B1%9F%E5%B0%8FD%E6%97%A5%E8%AF%AD%E8%AF%8D%E5%85%B8%5C%22%7D%22%2C%22_%22%3A%22H12HTRGIWNG4FYFB%22%2C%22is_sync%22%3A1%7D&t=1538290094470&callback=syncCookie
+
+  console.log MLJob_Test.test.js:53
+    https://u8.hujiang.com/v2/template.pcbatch?b0=fbe1583f-08de-8d2d-0928-33beaf4531b9&b6=true&b7=800&b8=600&b9=600&ba=1200&bb=true&bc=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&bd=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&bt=1538290094572&bv=2018-09-30%2014%3A48%3A14&bu=mozilla%2F5.0%20(windows%20nt%2010.0%3B%20win64%3B%20x64)%20applewebkit%2F537.36%20(khtml%2C%20like%20gecko)%20headlesschrome%2F71.0.3542.0%20safari%2F537.36&a0=__jsonpcallback&ax=106_b8d6371f-68e6-a8b9-2ebb-5186f833ae04_1__;157_6539377f-493c-9d48-b899-269d3ffe7245_1_200*29_;526_023269da-da83-aa02-56c8-619631bad885_1_200*29_;531_22325f9b-68ad-91f5-2319-d0b7700dc317_1_230*160_;533_9f7b0019-4adf-b767-69a9-4ca0e635052c_1_230*160_;539_350dbb1e-4ab6-ae29-5d38-6f979afc3bd8_2_230*160_;545_52730b52-aa63-934c-e03a-45b2f9c4af45_1_175*35_;547_bdb4966a-8b54-afda-50d9-48a5ffa7cff0_1__;&callback=__jsonpcallback
+
+  console.log MLJob_Test.test.js:53
+    https://u8.hujiang.com/v2/log?b0=fbe1583f-08de-8d2d-0928-33beaf4531b9&b2=157&b3=f65bf503-6a56-b9a6-9bea-15885f90addf&bc=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&bd=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&bt=1538290094687&bu=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20HeadlessChrome%2F71.0.3542.0%20Safari%2F537.36&bv=2018-09-30%2014%3A48%3A14&d3=false&d4=2&f1=show&f3=3&f5=24fee53f-0383-2958-240f-045af0a87757&f6=false&g0=%5B%7B%22b3%22%3A%226539377f-493c-9d48-b899-269d3ffe7245%22%2C%22d0%22%3A406%2C%22d1%22%3A7549%2C%22d2%22%3A7096%2C%22dq%22%3A%221L%252F%252BpLBfHylShYQLZ%252Bs26Q%253D%253D%22%2C%22dz%22%3A1%2C%22e1%22%3Afalse%7D%5D&bw=200*29&callback=jsonp_callback_28970608
+
+  console.log MLJob_Test.test.js:53
+    https://u8.hujiang.com/v2/log?b0=fbe1583f-08de-8d2d-0928-33beaf4531b9&b2=526&b3=a9844894-69bb-917c-5f1b-8da29d630eb6&bc=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&bd=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&bt=1538290094695&bu=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20HeadlessChrome%2F71.0.3542.0%20Safari%2F537.36&bv=2018-09-30%2014%3A48%3A14&d3=false&d4=2&f1=show&f3=3&f5=24fee53f-0383-2958-240f-045af0a87757&f6=false&g0=%5B%7B%22b3%22%3A%22023269da-da83-aa02-56c8-619631bad885%22%2C%22d0%22%3A549%2C%22d1%22%3A5836%2C%22d2%22%3A6052%2C%22dq%22%3A%221L%252F%252BpLBfHylShYQLZ%252Bs26Q%253D%253D%22%2C%22dz%22%3A1%2C%22e1%22%3Afalse%7D%5D&bw=200*29&callback=jsonp_callback_84748537
+
+  console.log MLJob_Test.test.js:53
+    https://u8.hujiang.com/v2/log?b0=fbe1583f-08de-8d2d-0928-33beaf4531b9&b2=531&b3=830853c4-ea8b-b062-4d8b-be8eb338a3fe&bc=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&bd=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&bt=1538290094697&bu=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20HeadlessChrome%2F71.0.3542.0%20Safari%2F537.36&bv=2018-09-30%2014%3A48%3A14&d3=false&d4=1&f1=show&f3=3&f5=24fee53f-0383-2958-240f-045af0a87757&f6=false&g0=%5B%7B%22b3%22%3A%2222325f9b-68ad-91f5-2319-d0b7700dc317%22%2C%22d0%22%3A1046%2C%22d1%22%3A18717%2C%22d2%22%3A16910%2C%22dq%22%3A%221L%252F%252BpLBfHylShYQLZ%252Bs26Q%253D%253D%22%2C%22dz%22%3A1%2C%22e1%22%3Afalse%7D%5D&bw=230*160&callback=jsonp_callback_74565581
+
+  console.log MLJob_Test.test.js:53
+    https://u8.hujiang.com/v2/log?b0=fbe1583f-08de-8d2d-0928-33beaf4531b9&b2=533&b3=6fd48007-c8f7-a9cf-64ea-d2b8b677303b&bc=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&bd=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&bt=1538290094705&bu=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20HeadlessChrome%2F71.0.3542.0%20Safari%2F537.36&bv=2018-09-30%2014%3A48%3A14&d3=false&d4=1&f1=show&f3=3&f5=24fee53f-0383-2958-240f-045af0a87757&f6=false&g0=%5B%7B%22b3%22%3A%229f7b0019-4adf-b767-69a9-4ca0e635052c%22%2C%22d0%22%3A549%2C%22d1%22%3A5804%2C%22d2%22%3A6072%2C%22dq%22%3A%221L%252F%252BpLBfHylShYQLZ%252Bs26Q%253D%253D%22%2C%22dz%22%3A1%2C%22e1%22%3Afalse%7D%5D&bw=230*160&callback=jsonp_callback_35634178
+
+  console.log MLJob_Test.test.js:53
+    https://u8.hujiang.com/v2/log?b0=fbe1583f-08de-8d2d-0928-33beaf4531b9&b2=539&b3=c1f919e5-3a10-8428-906b-80882735f710&bc=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&bd=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&bt=1538290094712&bu=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20HeadlessChrome%2F71.0.3542.0%20Safari%2F537.36&bv=2018-09-30%2014%3A48%3A14&d3=false&d4=1&f1=show&f3=3&f5=24fee53f-0383-2958-240f-045af0a87757&f6=false&g0=%5B%7B%22b3%22%3A%22350dbb1e-4ab6-ae29-5d38-6f979afc3bd8%22%2C%22d0%22%3A549%2C%22d1%22%3A5810%2C%22d2%22%3A6073%2C%22dq%22%3A%221L%252F%252BpLBfHylShYQLZ%252Bs26Q%253D%253D%22%2C%22dz%22%3A1%2C%22e1%22%3Afalse%7D%5D&bw=230*160&callback=jsonp_callback_99685834
+
+  console.log MLJob_Test.test.js:53
+    https://u8.hujiang.com/v2/log?b0=fbe1583f-08de-8d2d-0928-33beaf4531b9&b2=545&b3=564889cc-9be6-973b-825b-1c9001e2f53b&bc=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&bd=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&bt=1538290094722&bu=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20HeadlessChrome%2F71.0.3542.0%20Safari%2F537.36&bv=2018-09-30%2014%3A48%3A14&d3=false&d4=1&f1=show&f3=3&f5=24fee53f-0383-2958-240f-045af0a87757&f6=false&g0=%5B%7B%22b3%22%3A%2252730b52-aa63-934c-e03a-45b2f9c4af45%22%2C%22d0%22%3A513%2C%22d1%22%3A19328%2C%22d2%22%3A100239%2C%22dq%22%3A%221L%252F%252BpLBfHylShYQLZ%252Bs26Q%253D%253D%22%2C%22dz%22%3A1%2C%22e1%22%3Afalse%7D%5D&bw=175*35&callback=jsonp_callback_92485532
+
+  console.log MLJob_Test.test.js:53
+    https://u8.hujiang.com/v2/log?b0=fbe1583f-08de-8d2d-0928-33beaf4531b9&b2=106&b3=7ef3ee01-4a6c-bcef-ff6a-29a74921259d&bc=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&bd=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&bt=1538290094797&bu=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20HeadlessChrome%2F71.0.3542.0%20Safari%2F537.36&bv=2018-09-30%2014%3A48%3A14&d3=false&d4=6&f1=exposure&f3=3&f5=24fee53f-0383-2958-240f-045af0a87757&f6=false&g0=%5B%7B%22b3%22%3A%22b8d6371f-68e6-a8b9-2ebb-5186f833ae04%22%2C%22d0%22%3A513%2C%22d1%22%3A19324%2C%22d2%22%3A100233%2C%22dq%22%3A%221L%252F%252BpLBfHylShYQLZ%252Bs26Q%253D%253D%22%2C%22dz%22%3A1%2C%22e1%22%3Afalse%7D%5D&callback=jsonp_callback_87722909
+
+  console.log MLJob_Test.test.js:53
+    https://u8.hujiang.com/v2/log?b0=fbe1583f-08de-8d2d-0928-33beaf4531b9&b2=106&b3=7ef3ee01-4a6c-bcef-ff6a-29a74921259d&bc=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2F&bd=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&bt=1538290094799&bu=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20HeadlessChrome%2F71.0.3542.0%20Safari%2F537.36&bv=2018-09-30%2014%3A48%3A14&d3=false&d4=6&f1=show&f3=3&f5=24fee53f-0383-2958-240f-045af0a87757&f6=false&g0=%5B%7B%22b3%22%3A%22b8d6371f-68e6-a8b9-2ebb-5186f833ae04%22%2C%22d0%22%3A513%2C%22d1%22%3A19324%2C%22d2%22%3A100233%2C%22dq%22%3A%221L%252F%252BpLBfHylShYQLZ%252Bs26Q%253D%253D%22%2C%22dz%22%3A1%2C%22e1%22%3Afalse%7D%5D&callback=jsonp_callback_13441292
+
+  console.log MLJob_Test.test.js:53
+    https://gentian-frd.hjapi.com/gentian.gif?ready_time=206&load_time=534&ua=Mozilla%2F5.0%20(Windows%20NT%2010.0%3B%20Win64%3B%20x64)%20AppleWebKit%2F537.36%20(KHTML%2C%20like%20Gecko)%20HeadlessChrome%2F71.0.3542.0%20Safari%2F537.36&url=https%3A%2F%2Fdict.hjenglish.com%2Fjp%2Fjc%2F%25E3%2581%258A%25E6%2589%258B%25E6%25B4%2597%25E3%2581%2584&ie=&project=5003&business=1000&gentian_empty=0&request_id=81442ea8fc884c77b6656ada510ca1f8&page_id=0&connect_time=0&lookup_domain_time=0&response_time=2&request_time=178
+
+Jest did not exit one second after the test run has completed.
+
+This usually means that there are asynchronous operations that weren't stopped in your tests. Consider running Jest with `--detectOpenHandles` to troubleshoot this issue.
