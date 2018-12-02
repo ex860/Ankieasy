@@ -8,6 +8,8 @@ import click
 sys.path.append('anki')
 from anki import Collection as aopen
 
+CONFIG_PATH = 'config/inputMergeConfig.json'
+INPUT_FOLDER_PATH = 'input'
 START = 'start'
 END_OF_DICT = '----'
 
@@ -31,11 +33,11 @@ def handleProfile(data, collection, download_dir, inputFilePath):
     print('dict_source :{}'.format(data['dict_source']))
     print('card_type:{}'.format(data['card_type'] if 'card_type' in data else 'Basic'))
     
-    if not os.path.exists(inputFilePath):
+    if not os.path.exists("{}/{}".format(INPUT_FOLDER_PATH, inputFilePath)):
         print("No input file, Exit")
         return False
 
-    input_file = "{}/{}".format(os.getcwd(), inputFilePath)
+    input_file = "{}/{}/{}".format(os.getcwd(), INPUT_FOLDER_PATH, inputFilePath)
 
     card_type = data['card_type'] if 'card_type' in data else 'basic'
 
@@ -87,7 +89,7 @@ if '__main__':
     if len(sys.argv) >= 2:
         config_path = sys.argv[1]
     else:
-        config_path = 'inputMergeConfig.json'
+        config_path = CONFIG_PATH
     data = load_config(config_path)
     inputFilePath = data['input']
     collection = data['collection']

@@ -1,12 +1,12 @@
 {
 	"collection":"C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.anki2",
     "download_dir":"C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.media/",
-	"input":"input/input_M.txt",
+	"input":"input_M.txt",
 	"profiles": 
 	[
 		{
 	        "deck":"日文",
-			"dict_source":"japanese_mix",
+			"dict_source":"japanese_jisho",
 			"card_type":"japanese_recognition_recall"
 		},
 		{

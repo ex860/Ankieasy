@@ -4,10 +4,44 @@ import json
 import importlib
 import os
 import click
+import tkinter as tk
 
 sys.path.append('anki')
 from anki import Collection as aopen
 
+INPUT_PATH = 'config/config.json'
+INPUT_FOLDER_PATH = 'input'
+
+# @click.command()
+# @click.option('-i', '--inputfile', default='input_EY')
+# @click.option('-c', '--card_deck', default='英文')
+# @click.option('-d', '--dictionary', default='yahoo')
+# @click.option('-l', '--language', default='english')
+# @click.argument('collection')
+# @click.argument('download_dir')
+# def info(dictionary, inputfile, card_deck, language, collection, download_dir):
+#     profiles = {}
+#     profiles['file'] = inputfile
+#     profiles['deck'] = card_deck
+
+#     if dictionary.lower() == 'yahoo':
+#         profiles['dict_source'] = 'English_Yahoo'
+#     elif dictionary.lower() == 'cambridge':
+#         profiles['dict_source'] = 'English_Cambridge'
+#     elif dictionary.lower() == 'jisho':
+#         profiles['dict_source'] = 'japanese_jisho'
+#     elif dictionary.lower() == 'mix':
+#         profiles['dict_source'] = 'japanese_mix'
+#     elif dictionary.lower() == 'verb':
+#         profiles['dict_source'] = 'japanese_verb'
+
+#     if language.lower() == 'english' or language.lower() == 'en':
+#         profiles['card_type'] = 'basic_reverse'
+#     elif language.lower() == 'japanese' or language.lower() == 'jp':
+#         profiles['card_type'] = 'japanese_recognition_recall'
+    
+#     click.echo(collection)
+#     click.echo(download_dir)
 def initAnkiModule(data, collection, card_type):
     if bool(collection) == False or "deck" not in data:
         print('Collection or deck is not found!')
@@ -29,7 +63,7 @@ def handleProfile(data, collection, download_dir):
     print('dict_source :{}'.format(data['dict_source']))
     print('card_type:{}'.format(data['card_type'] if 'card_type' in data else 'Basic'))
 
-    inputFilePath = 'input/{}'.format(data['file'])
+    inputFilePath = '{}/{}'.format(INPUT_FOLDER_PATH, data['file'])
 
     if 'file' not in data or not os.path.exists(inputFilePath):
         print("No input file, Exit")
@@ -74,14 +108,24 @@ def load_config(path):
     with open(path, encoding='utf-8') as data_file:
         return json.load(data_file)
 
-if '__main__':
+def main():
     if len(sys.argv) >= 2:
         config_path = sys.argv[1]
     else:
-        config_path = 'config.json'
+        config_path = INPUT_PATH
     data = load_config(config_path)
     collection = data['collection']
     download_dir = data['download_dir']
     for profile in data['profiles']:
         if handleProfile(profile, collection, download_dir) == False:
             break
+    # info()
+
+if '__main__':
+    # win = tk.Tk()
+    # win.title("Ankieasy")
+    # label = tk.Label(win, text="Hello~")
+    # label.pack()
+    # button = tk.Button(win, text="確定", command=main).pack()
+    # win.mainloop()
+    main()

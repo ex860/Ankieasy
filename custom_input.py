@@ -7,6 +7,8 @@ import os
 sys.path.append('anki')
 from anki import Collection as aopen
 
+CONFIG_PATH = 'config/customInput.json'
+
 def initAnkiModule(data, collection, card_type):
     if bool(collection) == False or "deck" not in data:
         print('Collection or deck is not found!')
@@ -59,7 +61,7 @@ if '__main__':
     if len(sys.argv) >= 2:
         input_path = sys.argv[1]
     else:
-        input_path = 'customInput.json'
+        input_path = CONFIG_PATH
     data = load_input(input_path)
     collection = data['collection']
     for card in data['cards']:
