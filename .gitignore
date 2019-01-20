@@ -1,4 +1,6 @@
 # Input and configuration files
+input/*.txt
+config/*.json
 README.md
 
 # Byte-compiled / optimized / DLL files

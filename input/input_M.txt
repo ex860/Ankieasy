@@ -1,19 +1,5 @@
-[japanese_mix]
-六
-七
-----
-
-[japanese_verb]
-書く
-吸う
-----
-
 [english_yahoo]
-one
-two
 ----
 
 [english_cambridge]
-three
-four
 ----
