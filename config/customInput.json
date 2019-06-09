@@ -9,17 +9,15 @@
         {
             "deck": "日文句子",
             "card_type": "japanese_recognition_recall",
-            "content": [
-                
-            ]
+            "content": []
         },
         {
             "deck": "英文",
             "card_type": "basic_reverse",
             "content": [
                 {
-                    "front_word": "222",
-                    "back_word": "3333"
+                    "front_word": "",
+                    "back_word": ""
                 }
             ]
         },

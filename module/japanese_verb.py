@@ -40,7 +40,7 @@ def getJishoMasu(tr, jisho_masu, front_word, download_dir):
     back_word = ''
 
     jisho_masuCnt = 0
-    for typeStr in ['jisho', 'masu']:
+    for typeStr in ['jisho', 'masu', 'te']:
         typeTd = tr.find('td', class_='katsuyo katsuyo_{}_js'.format(typeStr))
         soundDiv = typeTd.find('div', class_='katsuyo_proc_button clearfix')
         if soundDiv != None:

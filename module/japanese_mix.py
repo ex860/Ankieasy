@@ -101,7 +101,7 @@ def getForvoSound(soup, download_dir, word):
         finalSoundUrl = soundUrlList[authorList.index('strawberrybrown')]
     else:
         for author in authorList:
-            if author in ['skent', 'akitomo', 'kaoring', 'kyokotokyojapan', 'kiiro', 'yasuo', 'sorechaude', 'Phlebia']:
+            if author in ['akitomo', 'kaoring', 'kyokotokyojapan', 'kiiro', 'yasuo', 'sorechaude', 'Phlebia']:
                 finalAuthor = author
                 finalSoundUrl = soundUrlList[authorList.index(author)]
                 getAuthorInRecommendedList = True
@@ -177,7 +177,9 @@ def LookUp(word, download_dir):
     differentWord = 1
 
     opener=urllib.request.build_opener()
-    opener.addheaders=[('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1941.0 Safari/537.36')]
+    opener.addheaders=[
+        ('User-Agent','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/71.0.3542.0 Safari/537.36')
+    ]
     urllib.request.install_opener(opener)
     ssl._create_default_https_context = ssl._create_unverified_context
 
