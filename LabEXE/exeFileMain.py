@@ -5,10 +5,10 @@ import importlib
 import os
 import click
 import constant
-from tkinter import *
+import tkinter as tk
 from pprint import PrettyPrinter as pp
 
-sys.path.append('anki')
+sys.path.append('C:/Users/Yu-Hsien/Desktop/Ankieasy/anki')
 from anki import Collection as aopen
 
 START = 'start'
@@ -38,7 +38,8 @@ def getExplanation(deckInfo, collection, download_dir):
         print('deck_file: {}'.format(deckInfoData['name']))
         print('dict_source: {}'.format(deckInfoData['webDict']))
         print('card_type: {}'.format(deckInfoData['cardType'] if 'cardType' in deckInfoData else 'Basic'))
-
+        
+        sys.path.append('C:/Users/Yu-Hsien/Desktop/Ankieasy')
         cardType = deckInfoData['cardType'] if 'cardType' in deckInfoData else 'basic'
         webDict = importlib.import_module('module.{}'.format(deckInfoData['webDict'].lower()))
 
@@ -91,6 +92,7 @@ def getDeckInfo(collection, enableDefault):
             if ankiDeck['name'] == '預設' or ankiDeck['name'] == 'Default':
                 continue
         deckInfo.append(dict(name = ankiDeck['name'], cardType = deck.models.get(ankiDeck['mid'])['name']))
+    # print(deckInfo)
     deck.save()
     deck.close()
     return deckInfo
@@ -103,39 +105,27 @@ def getWebDictAndInputWord(inputData, deckInfo):
                 break
     return deckInfo
 
-def step1(collection):
-    global deckInfo
-    enableDefault = False
-    deckInfo = getDeckInfo(collection, enableDefault)
 
 if '__main__':
-    master = Tk()
+    master = tk.Tk()
     master.title('Ankieasy')
-    label = Label(master, text = '請輸入collection以及下載的路徑')
-    Label(master, text = 'collection路徑:').grid(row = 0)
-    Label(master, text = '下載路徑:').grid(row = 1)
+    master.geometry('700x300')
+    tk.Label(master, text = '請輸入collection以及下載的路徑')
+    tk.Label(master, text = 'collection路徑:').grid(row = 0)
+    tk.Label(master, text = '下載路徑:').grid(row = 1)
+    tk.Label(master, text = '日文').grid(row = 2)
+    tk.Label(master, text = '英文').grid(row = 3)
 
-    collection = Entry(master)
-    download_dir = Entry(master)
+    # global collectStr
+    # global deckInfo
+    # global downloadStr
+    # global inputJP
+    # global inputEN
 
-    collection.insert(0, 'C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.anki2')
-    download_dir.insert(0, 'C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.media/')
-
-    collection.grid(row = 0, column = 1)
-    download_dir.grid(row = 1, column = 1)
-    button = Button(master, text = '下一步')
-    button['command'] = lambda arg1 = collection.get(): step1(arg1)
-    button.grid(row = 2, column = 1)
-
-    msg = Message(master, text = '123')
-    # msg.grid(row = 0, col = 0)
-
-    master.mainloop()
-
-    # # collection = 'C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.anki2'
-    # # download_dir = 'C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.media/'
-
-    pp(indent = 2).pprint(deckInfo)
+    collectStr = tk.StringVar()
+    downloadStr = tk.StringVar()
+    # inputJP = tk.StringVar()
+    # inputEN = tk.StringVar()
 
     fakeData = [
         {
@@ -168,6 +158,38 @@ if '__main__':
             ]
         },
     ]
-    deckInfo = getWebDictAndInputWord(fakeData, deckInfo)
-    # pp(indent = 2).pprint(deckInfo)
-    getExplanation(deckInfo, collection, download_dir)
+
+    collection = tk.Entry(master, width = 70, textvariable = collectStr)
+    download_dir = tk.Entry(master, width = 70, textvariable = downloadStr)
+    JPText = tk.Text(master, width = 70, height = 5)
+    ENText = tk.Text(master, width = 70, height = 5)
+
+    collection.insert(0, 'C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.anki2')
+    # download_dir.insert(0, 'C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.media/')
+
+    collection.grid(row = 0, column = 1)
+    download_dir.grid(row = 1, column = 1)
+    JPText.grid(row = 2, column = 1)
+    ENText.grid(row = 3, column = 1)
+
+
+    def mainProcess():
+        enableDefault = False
+        deckInfo = getDeckInfo(collectStr.get(), enableDefault)
+        deckInfo = getWebDictAndInputWord(fakeData, deckInfo)
+        print(deckInfo)
+        getExplanation(deckInfo, collection, download_dir)
+
+    button = tk.Button(master, text = '開始擷取', command = mainProcess)
+    # button['command'] = lambda arg1 = collection.get(): mainProcess(arg1)
+    button.grid(row = 4, column = 1)
+
+    # msg = Message(master, text = '123')
+    # msg.grid(row = 3, column = 3)
+
+    master.mainloop()
+
+    # collection = 'C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.anki2'
+    # download_dir = 'C:/Users/Yu-Hsien/AppData/Roaming/Anki2/YuHsien/collection.media/'
+
+    
