@@ -22,7 +22,7 @@ def LookUp(word, download_dir):
     if wordUrl[-1] == '-':
         wordUrl = wordUrl[:-1]
     
-    url='https://dictionary.cambridge.org/us/dictionary/english/{}'.format(wordUrl)
+    url='https://dictionary.cambridge.org/us/dictionary/english-chinese-traditional/{}'.format(wordUrl)
 
     opener=urllib.request.build_opener()
     opener.addheaders=[('User-Agent','Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1941.0 Safari/537.36')]
@@ -41,6 +41,19 @@ def LookUp(word, download_dir):
 
     if word == '':
         return None
+
+    posBlocks = soup.select('div.pr.entry-body__el')
+    # print(posBlocks[3])
+    for posBlock in posBlocks:
+        for enMeaning in posBlock.select('div.def.ddef_d'):
+            print(enMeaning.get_text())
+        for zhMeaning in posBlock.select('div.def-body.ddef_b > span.trans.dtrans.dtrans-se'):
+            print(zhMeaning.get_text())
+        for enExample in posBlock.select('div.def-body.ddef_b > div.examp.dexamp > span.eg.deg'):
+            print(enExample.get_text())
+        for zhExample in posBlock.select('div.def-body.ddef_b > div.examp.dexamp > span.trans.dtrans.dtrans-se.hdb'):
+            print(zhExample.get_text())
+
 
     entryBox = soup.find('div', class_ = 'entrybox')
     if entryBox is None:
