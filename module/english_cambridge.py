@@ -38,21 +38,38 @@ def LookUp(word, download_dir):
     guideWordStyleTail = '</b></font>'
     posStyleHead = '<font color=#00fff9>'
     posStyleTail = '</font>'
+    soundCnt = 1
 
     if word == '':
         return None
 
-    posBlocks = soup.select('div.pr.entry-body__el')
-    # print(posBlocks[3])
-    for posBlock in posBlocks:
-        for enMeaning in posBlock.select('div.def.ddef_d'):
-            print(enMeaning.get_text())
-        for zhMeaning in posBlock.select('div.def-body.ddef_b > span.trans.dtrans.dtrans-se'):
-            print(zhMeaning.get_text())
-        for enExample in posBlock.select('div.def-body.ddef_b > div.examp.dexamp > span.eg.deg'):
-            print(enExample.get_text())
-        for zhExample in posBlock.select('div.def-body.ddef_b > div.examp.dexamp > span.trans.dtrans.dtrans-se.hdb'):
-            print(zhExample.get_text())
+    for posBlock in soup.select('div.pr.entry-body__el'):                           # posBlock means the part of speech block of the word
+        for pos in posBlock.select('span.pos.dpos'):
+            print(pos.get_text())
+        for usAudio in posBlock.select('span.us.dpron-i'):
+            for source in usAudio.select('source[type="audio/mpeg"]'):
+                if source is not None and bool(download_dir) != False:
+                    try:
+                        urllib.request.urlretrieve('https://dictionary.cambridge.org{}'.format(source['src']), '{}Py_{}_{}.mp3'.format(download_dir, word, soundCnt))
+                        front_word = '[sound:Py_{}_{}.mp3]'.format(word, soundCnt) + front_word
+                        soundCnt = soundCnt + 1
+                    except urllib.error.HTTPError as err:
+                        print("HTTP Error:", err)
+                    print(source['src'])
+        for guideWordBlock in posBlock.select('div.pr.dsense'):                     # There can be more than one guide word in a part of speech
+            for guideword in guideWordBlock.select('span.guideword.dsense_gw'):
+                print(guideword.get_text())
+            for meaningBlock in guideWordBlock.select('div.def-block.ddef_block'):  # A guide word can include many meanings
+                for enMeaning in meaningBlock.select('div.def.ddef_d'):     
+                    print(enMeaning.get_text())
+                for zhMeaning in meaningBlock.select('div.def-body.ddef_b > span.trans.dtrans.dtrans-se'):
+                    print(zhMeaning.get_text())
+                for enExample in meaningBlock.select('div.def-body.ddef_b > div.examp.dexamp > span.eg.deg'):
+                    print(enExample.get_text())
+                for zhExample in meaningBlock.select('div.def-body.ddef_b > div.examp.dexamp > span.trans.dtrans.dtrans-se.hdb'):
+                    print(zhExample.get_text())
+            print('-------------------------')
+        print('●●●●●●●●●●●●●●●●●●●●●●●●●●')
 
 
     entryBox = soup.find('div', class_ = 'entrybox')
