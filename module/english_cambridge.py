@@ -44,7 +44,11 @@ def LookUp(word, download_dir):
     if word == '':
         return None
 
-    for posBlock in soup.select('div.pr.entry-body__el'):                           # posBlock means the part of speech block of the word
+    posIdiomBlocks = soup.select('div.pr.entry-body__el')
+    if len(posIdiomBlocks) == 0:
+        posIdiomBlocks = soup.select('div.pr.idiom-block')
+
+    for posBlock in posIdiomBlocks:                                                 # posBlock means the part of speech block of the word
         for pos in posBlock.select('span.pos.dpos'):
             front_word += "{}({}){}<br>".format(posStyleHead, pos.get_text(), posStyleTail)
             back_word += "{}({}){}<br>".format(posStyleHead, pos.get_text(), posStyleTail)
