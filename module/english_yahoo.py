@@ -17,23 +17,16 @@ def getRealWord(soup, front_word):
     return front_word
 
 def getCBSound(soup, front_word, word, download_dir):
-    tabEntry = soup.find('div', class_ = 'entrybox')
-    if tabEntry is None:
-        print("<< CBSound Not Found !!! (entrybox not found) >>")
-        return front_word
-
-    partOfSpeech = tabEntry.find_all('div', class_='entry-body__el clrd js-share-holder')
-    if len(partOfSpeech) == 0:
-        print("<< CBSound Not Found !!! (entry-body__el clrd js-share-holder not found)>>")
-        return front_word
-    sound = partOfSpeech[0].find('span', attrs={'data-src-mp3':True})
-
-    if sound is not None and bool(download_dir) != False:
-        try:
-            urllib.request.urlretrieve('https://dictionary.cambridge.org{}'.format(sound['data-src-mp3']), '{}Py_{}.mp3'.format(download_dir, word))
-            front_word = '[sound:Py_{}.mp3]'.format(word) + front_word
-        except urllib.error.HTTPError as err:
-            print("HTTP Error:", err)
+    for posBlock in soup.select('div.pr.entry-body__el'):
+        for usAudio in posBlock.select('span.us.dpron-i'):
+            for source in usAudio.select('source[type="audio/mpeg"]'):
+                if source is not None and bool(download_dir) != False:
+                    try:
+                        urllib.request.urlretrieve('https://dictionary.cambridge.org{}'.format(source['src']), '{}Py_{}.mp3'.format(download_dir, word))
+                        front_word = '[sound:Py_{}.mp3]'.format(word) + front_word
+                        return front_word
+                    except urllib.error.HTTPError as err:
+                        print("HTTP Error:", err)
 
     return front_word
 
@@ -142,7 +135,7 @@ def LookUp(word, download_dir):
     wordUrl = wordUrl.replace('%2F','-')
     wordUrl = wordUrl.replace('--','-')
 
-    url='https://dictionary.cambridge.org/us/dictionary/english/{}'.format(wordUrl)
+    url='https://dictionary.cambridge.org/us/dictionary/english-chinese-traditional/{}'.format(wordUrl)
     content = urllib.request.urlopen(url).read()
     CBSoup = BeautifulSoup(content, 'lxml')
 
