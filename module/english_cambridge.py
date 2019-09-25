@@ -39,13 +39,16 @@ def LookUp(word, download_dir):
     posStyleHead = '<font color=#00fff9>'
     posStyleTail = '</font>'
     soundCnt = 1
+    cnt = 1
 
     if word == '':
         return None
 
     for posBlock in soup.select('div.pr.entry-body__el'):                           # posBlock means the part of speech block of the word
         for pos in posBlock.select('span.pos.dpos'):
-            print(pos.get_text())
+            front_word += "{}({}){}<br>".format(posStyleHead, pos.get_text(), posStyleTail)
+            back_word += "{}({}){}<br>".format(posStyleHead, pos.get_text(), posStyleTail)
+            # print(pos.get_text())
         for usAudio in posBlock.select('span.us.dpron-i'):
             for source in usAudio.select('source[type="audio/mpeg"]'):
                 if source is not None and bool(download_dir) != False:
@@ -55,79 +58,36 @@ def LookUp(word, download_dir):
                         soundCnt = soundCnt + 1
                     except urllib.error.HTTPError as err:
                         print("HTTP Error:", err)
-                    print(source['src'])
+                    # print(source['src'])
         for guideWordBlock in posBlock.select('div.pr.dsense'):                     # There can be more than one guide word in a part of speech
             for guideword in guideWordBlock.select('span.guideword.dsense_gw'):
-                print(guideword.get_text())
+                back_word += "{}{}{}<br>".format(guideWordStyleHead, guideword.get_text(), guideWordStyleTail)
+                # print(guideword.get_text())
             for meaningBlock in guideWordBlock.select('div.def-block.ddef_block'):  # A guide word can include many meanings
-                for enMeaning in meaningBlock.select('div.def.ddef_d'):     
-                    print(enMeaning.get_text())
+                for enMeaning in meaningBlock.select('div.def.ddef_d'):
+                    back_word += "{}) {}<br>".format(cnt, enMeaning.get_text())
+                    # print(enMeaning.get_text())
                 for zhMeaning in meaningBlock.select('div.def-body.ddef_b > span.trans.dtrans.dtrans-se'):
-                    print(zhMeaning.get_text())
+                    back_word += "{}) {}<br>".format(cnt, zhMeaning.get_text())
+                    # print(zhMeaning.get_text())
+                front_word += "{}) ".format(cnt)
                 for enExample in meaningBlock.select('div.def-body.ddef_b > div.examp.dexamp > span.eg.deg'):
-                    print(enExample.get_text())
+                    front_word += "{}".format(enExample.get_text())
+                    # print(enExample.get_text())
+                    break
+                front_word += "<br>"
                 for zhExample in meaningBlock.select('div.def-body.ddef_b > div.examp.dexamp > span.trans.dtrans.dtrans-se.hdb'):
-                    print(zhExample.get_text())
-            print('-------------------------')
-        print('●●●●●●●●●●●●●●●●●●●●●●●●●●')
-
-
-    entryBox = soup.find('div', class_ = 'entrybox')
-    if entryBox is None:
-        return None
-    englishTab = entryBox.find('div', id = 'dataset-cacd')
-    if englishTab is None:
-        englishTab = entryBox.find('div', id = 'dataset-cald4')
-        if englishTab is None:
-            return None
-    
-    partOfSpeech = englishTab.find_all('div', class_='entry-body__el clrd js-share-holder')
-    for i in range(0,len(partOfSpeech)):
-        sound = partOfSpeech[i].find('span', attrs={'data-src-mp3':True})
-
-        if sound is not None and bool(download_dir) != False:
-            try:
-                urllib.request.urlretrieve('https://dictionary.cambridge.org{}'.format(sound['data-src-mp3']), download_dir+'Py_'+word+'.mp3')
-                front_word = '[sound:Py_'+word+'.mp3]' + front_word
-            except urllib.error.HTTPError as err:
-                print("HTTP Error:", err)
-        
-        posgram = partOfSpeech[i].find('span', class_='posgram ico-bg')
-        if posgram is not None:
-            pos = posgram.find('span').get_text() # get POS
-            front_word += posStyleHead + '(' + pos + ')' + posStyleTail + '<br>'
-            back_word +=  posStyleHead + '(' + pos + ')' + posStyleTail + '<br>'
-        senseBlock = partOfSpeech[i].find_all('div', class_='sense-block')
-        cnt = 1
-        for j in range(0,len(senseBlock)):
-            guideWord = senseBlock[j].find('span', class_='guideword') # get the guide word ex.(BREAK)
-            if guideWord is not None:
-                guideWordClear = guideWord.find('span').get_text()
-                back_word += guideWordStyleHead + '(' + guideWordClear + ')' + guideWordStyleTail + '<br>'
-            defBlock = senseBlock[j].find_all('div', class_='def-block pad-indent')
-            for k in range(0,len(defBlock)):
-                # English explain
-                explain = defBlock[k].find('b', class_='def').get_text() # get the explain
-                if explain[-2] == ':':
-                    tmp = explain[:-2]
-                    explain = tmp + '.'     # Replace the colon to dot
-                if len(defBlock) != 1:    # If the part of speech has more than one meaning, number the meaning list
-                    front_word += str(cnt) + '. '
-                    back_word += str(cnt) + '. '
-                back_word += explain + '<br>'
-
-                # example sentence
-                defBody = defBlock[k].find('span', class_='def-body')
-                if defBody != None:
-                    eg = defBody.find('span', class_='eg')
-                    if eg != None:
-                        exampleSentence = eg.get_text() # get the example sentence
-                        front_word += exampleSentence
-                front_word += '<br>'
+                    back_word += "{}<br>".format(zhExample.get_text())
+                    # print(zhExample.get_text())
+                    break
                 cnt += 1
+            # print('-------------------------')
+        # print('●●●●●●●●●●●●●●●●●●●●●●●●●●')
 
     # Some meaning will reveal the 'word' in back_word
     back_word = back_word.replace(word,'___')
+    uppercase_word = word[0].upper() + word[1:len(word)]
+    back_word = back_word.replace(uppercase_word,'___')
 
     result['front_word'] = front_word
     result['back_word'] = back_word
