@@ -156,7 +156,10 @@ if '__main__':
         ]
         deckInfo = getWebDictAndInputWord(inputWord, deckInfo)
         pprint(deckInfo)
+
+        # Replaced the regex 'anki2$' with 'media/' in collectStr.get()
         downloadStr = re.sub('anki2$', 'media/', collectStr.get())
+        
         getExplanation(deckInfo, collectStr.get(), downloadStr)
         master.destroy()
 
