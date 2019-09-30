@@ -16,15 +16,37 @@ def load_input(path):
         return json.load(data_file)
 
 if '__main__':
+    
+    f = open('output.txt', 'w', encoding='utf8')
     data = load_input(CONFIG_PATH)
     collection = data['collection']
+
     deck = aopen(collection)
-    # print(deck.tags.allItems())
-    # print(deck.tags.all())
-    print('------------------------------')
-    # print(deck.getNote(deck.findNotes('male.mp3')[5]).items())
-    # print(deck.getNote(deck.findNotes('male.mp3')[55]).__getitem__('Expression'))
-    # print('>>>>>>>>>>>>>>')
-    # print(deck.getNote(deck.findNotes('male.mp3')[55]).__getitem__('Reading'))
-    res = OJAD.LookUp('打ち合う', download_dir)
-    # print(res)
+    deckId = deck.decks.id('日文')
+    deck.decks.select(deckId)
+
+    cnt = 0
+    for note in deck.findNotes('male.mp3'):
+        expression = deck.getNote(note).__getitem__('Expression')
+
+        # Find the Jisho form for LookUp
+        firstMp3 = expression.find('male.mp3')
+        firstLessSign = expression[firstMp3:].find('<')
+        jisho = expression[firstMp3 + 9:firstMp3 + firstLessSign]
+        # print(jisho)
+        if (jisho == '' or jisho == '預かる' or jisho == '舐める'):
+            continue
+
+        res = OJAD.LookUp(jisho, download_dir)
+        # print(res['front_word'])
+        lastMp3 = expression.rfind('male.mp3')
+        firstGreaterSign = expression[lastMp3:].find('>')
+        # print(res['front_word'] + expression[lastMp3 + firstGreaterSign + 1:])
+        deck.getNote(note).__setitem__('Expression', res['front_word'] + expression[lastMp3 + firstGreaterSign + 1:])
+        deck.getNote(note).flush()
+        # f.write(jisho + '\n' + expression[0:lastMp3 + firstGreaterSign + 1] + '\n')
+        cnt = cnt + 1
+        if (cnt == 3):
+            break
+    deck.save()
+    deck.close()

@@ -17,13 +17,7 @@ verb_type_list = [
     'jisho', 
     'masu', 
     'te', 
-    'ta', 
     'nai', 
-    'nakatta', 
-    'ba', 
-    'shieki', 
-    'ukemi', 
-    'meirei', 
     'kano', 
     'ishi'
 ]
@@ -56,6 +50,7 @@ def getVerb(tr, jisho_masu, typeArray, download_dir):
     stem = {}
     kanjiGana = ''
 
+    # print(jisho_masu)
     jisho = jisho_masu.split('・')[0]
     masu = jisho_masu.split('・')[1]
 
@@ -133,11 +128,11 @@ def LookUp(word, download_dir):
         midashiWrapper = midashi.find('div', class_='midashi_wrapper')
         jisho_masu = midashiWrapper.get_text()
         jisho_masu = jisho_masu.split(chr(10))[1]
-        if word == jisho_masu.split('・')[0] or word == jisho_masu.split('・')[1]:
+        if len(jisho_masu.split('・')) > 1 and (word == jisho_masu.split('・')[0] or word == jisho_masu.split('・')[1]):
             tbodyTr = tbodyTrIter
             break
     verbObj = getVerb(tbodyTr, jisho_masu, verb_type_list, download_dir)
-    print(verbObj)
+    # print(verbObj)
     result['front_word'] = verbObj['front_word']
     result['back_word'] = ''
     result['read_word'] = verbObj['read_word']
