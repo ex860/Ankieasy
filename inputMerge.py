@@ -58,16 +58,21 @@ def handleProfile(data, collection, download_dir, inputFilePath):
                     deck.save()
                     deck.close()
                     return False
+
+                # Mapping keys from result object to Anki's template (card_data):
+                # front_word -> Expression
+                # back_word  -> Meaning
+                # read_word  -> Reading
                 card_data = card_type.MakeCard(result)
 
                 if 0 == len(card_data):
                     continue
 
-                card = deck.newNote()
+                note = deck.newNote()
                 for key in card_data:
-                    card[key] = card_data[key]
+                    note[key] = card_data[key]
                 try:
-                    deck.addNote(card)
+                    deck.addNote(note)
                 except(Exception, e):
                     if hasattr(e, "data"):
                         sys.exit("ERROR: Cound not add {}:{}", e.data["field"], e.data['type'])

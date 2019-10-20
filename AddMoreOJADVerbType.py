@@ -27,7 +27,8 @@ if '__main__':
 
     cnt = 0
     for note in deck.findNotes('male.mp3'):
-        expression = deck.getNote(note).__getitem__('Expression')
+        Note = deck.getNote(note)
+        expression = Note.__getitem__('Expression')
 
         # Find the Jisho form for LookUp
         firstMp3 = expression.find('male.mp3')
@@ -42,8 +43,8 @@ if '__main__':
         lastMp3 = expression.rfind('male.mp3')
         firstGreaterSign = expression[lastMp3:].find('>')
         # print(res['front_word'] + expression[lastMp3 + firstGreaterSign + 1:])
-        deck.getNote(note).__setitem__('Expression', res['front_word'] + expression[lastMp3 + firstGreaterSign + 1:])
-        deck.getNote(note).flush()
+        Note.__setitem__('Expression', res['front_word'] + expression[lastMp3 + firstGreaterSign + 1:])
+        Note.flush()
         # f.write(jisho + '\n' + expression[0:lastMp3 + firstGreaterSign + 1] + '\n')
         cnt = cnt + 1
         if (cnt == 3):
