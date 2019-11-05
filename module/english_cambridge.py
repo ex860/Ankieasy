@@ -44,7 +44,7 @@ def LookUp(word, download_dir):
     if word == '':
         return None
 
-    posIdiomBlocks = soup.select('div.pr.entry-body__el')
+    posIdiomBlocks = soup.select('div.entry-body__el')
     if len(posIdiomBlocks) == 0:
         posIdiomBlocks = soup.select('div.pr.idiom-block')
 
@@ -58,7 +58,7 @@ def LookUp(word, download_dir):
                 if source is not None and bool(download_dir) != False:
                     try:
                         urllib.request.urlretrieve('https://dictionary.cambridge.org{}'.format(source['src']), '{}Py_{}_{}.mp3'.format(download_dir, word, soundCnt))
-                        front_word = '[sound:Py_{}_{}.mp3]'.format(word, soundCnt) + front_word
+                        front_word = front_word + '[sound:Py_{}_{}.mp3]'.format(word, soundCnt)
                         soundCnt = soundCnt + 1
                     except urllib.error.HTTPError as err:
                         print("HTTP Error:", err)
