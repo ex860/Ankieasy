@@ -3,6 +3,7 @@ import json
 import importlib
 import os
 import module.japanese_verb as OJAD
+import re
 
 sys.path.append('anki')
 from anki import Collection as aopen
@@ -30,24 +31,30 @@ if '__main__':
         Note = deck.getNote(note)
         expression = Note.__getitem__('Expression')
 
-        # Find the Jisho form for LookUp
-        firstMp3 = expression.find('male.mp3')
-        firstLessSign = expression[firstMp3:].find('<')
-        jisho = expression[firstMp3 + 9:firstMp3 + firstLessSign]
-        # print(jisho)
-        if (jisho == '' or jisho == '預かる' or jisho == '舐める'):
-            continue
+        matchingMp3Arraylen = len([m.start() for m in re.finditer('male.mp3', expression)])
+        
+        if matchingMp3Arraylen != 6:
+            # Find the Jisho form for LookUp
+            firstMp3 = expression.find('male.mp3')
+            firstLessSign = expression[firstMp3:].find('<')
+            jisho = expression[firstMp3 + 9:firstMp3 + firstLessSign]
+            # print(jisho)
+            if (jisho == '' or jisho == '預かる' or jisho == '舐める'):
+                continue
 
-        res = OJAD.LookUp(jisho, download_dir)
-        # print(res['front_word'])
-        lastMp3 = expression.rfind('male.mp3')
-        firstGreaterSign = expression[lastMp3:].find('>')
-        # print(res['front_word'] + expression[lastMp3 + firstGreaterSign + 1:])
-        Note.__setitem__('Expression', res['front_word'] + expression[lastMp3 + firstGreaterSign + 1:])
-        Note.flush()
-        # f.write(jisho + '\n' + expression[0:lastMp3 + firstGreaterSign + 1] + '\n')
-        cnt = cnt + 1
-        if (cnt == 3):
-            break
+            res = OJAD.LookUp(jisho, download_dir)
+            # print(res['front_word'])
+            lastMp3 = expression.rfind('male.mp3')
+            firstGreaterSign = expression[lastMp3:].find('>')
+            # print(res['front_word'] + expression[lastMp3 + firstGreaterSign + 1:])
+
+            Note.__setitem__('Expression', res['front_word'] + expression[lastMp3 + firstGreaterSign + 1:])
+            Note.flush()
+
+            # f.write(jisho + '\n' + expression[0:lastMp3 + firstGreaterSign + 1] + '\n')
+
+            # cnt = cnt + 1
+            # if (cnt == 5):
+            #     break
     deck.save()
     deck.close()
